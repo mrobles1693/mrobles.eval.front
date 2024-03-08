@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+    <span>RESERVAR</span>
+</mat-toolbar>
+<div class="row p-3 m-0">
+    <mat-form-field class="col-12 col-md-6 m-0" appearance="outline">
+        <mat-label>Tipo Documento:</mat-label>
+        <mat-select [formControl]="fcTipoDocumento" (selectionChange)="fnChgTipoDocumento()">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let tipoDocumento of listTipoDocumento" [value]="tipoDocumento.nIdTipoDocumento">
+              {{tipoDocumento.sTipoDocumento}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="isInvalidFc(fcTipoDocumento)">{{getErrorFC(fcTipoDocumento)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12 col-md-6 m-0">
+        <mat-label class="pb-2">Nro Documento</mat-label>
+        <input type="text" [formControl]="fcDocumento" (keyup)="fnChgDocumento()" matInput>
+        <mat-error *ngIf="isInvalidFc(fcDocumento)">{{getErrorFC(fcDocumento)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12 col-md-6 m-0">
+        <mat-label class="pb-2">Apellido Paterno</mat-label>
+        <input type="text" [formControl]="fcApellidoP" matInput>
+        <mat-error *ngIf="isInvalidFc(fcApellidoP)">{{getErrorFC(fcApellidoP)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12 col-md-6 m-0">
+        <mat-label class="pb-2">Apellido Materno</mat-label>
+        <input type="text" [formControl]="fcApellidoM" matInput>
+        <mat-error *ngIf="isInvalidFc(fcApellidoM)">{{getErrorFC(fcApellidoM)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12 m-0">
+        <mat-label class="pb-2">Nombres</mat-label>
+        <input type="text" [formControl]="fcNombres" matInput>
+        <mat-error *ngIf="isInvalidFc(fcNombres)">{{getErrorFC(fcNombres)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12 col-md-6 m-0" appearance="outline">
+        <mat-label>Genero:</mat-label>
+        <mat-select [formControl]="fcGenero">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let genero of listGenero" [value]="genero.nIdGenero">
+              {{genero.sGenero}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="isInvalidFc(fcGenero)">{{getErrorFC(fcGenero)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12 col-md-6 m-0">
+        <mat-label>Fecha</mat-label>
+        <input style="color: black;" matInput [matDatepicker]="dpFecIni" [formControl]="fcFechaNacimiento">
+        <mat-datepicker-toggle matIconSuffix [for]="dpFecIni"></mat-datepicker-toggle>
+        <mat-datepicker #dpFecIni></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="col-12 m-0">
+        <mat-label class="pb-2">Cant. Entradas</mat-label>
+        <input type="number" [formControl]="fcCantidad" matInput>
+        <mat-error *ngIf="isInvalidFc(fcCantidad)">{{getErrorFC(fcCantidad, '', 0, 0, 'Mínimo 1','Maximo ' + data.salaPelicula.nCantidadDisponible)}}</mat-error>
+    </mat-form-field>
+</div>
+<div class="d-flex justify-content-between m-3">
+    <button mat-raised-button color="primary" (click)="fnGuardar()">RESERVAR</button>
+    <button mat-raised-button color="warn" (click)="onClose()">CANCELAR</button>
+</div>

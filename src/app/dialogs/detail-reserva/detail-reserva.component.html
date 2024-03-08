@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+    <span>DETALLE RESERVA</span>
+</mat-toolbar>
+<div class="row p-3 m-0">
+    <mat-form-field class="col-6 m-0">
+        <mat-label class="pb-2">N° Reserva:</mat-label>
+        <input type="text" style="color: black;" matInput disabled value="{{data.reserva.nIdReserva}}">
+    </mat-form-field>        
+    <mat-form-field class="col-6 m-0">
+        <mat-label class="pb-2">Cant. Asientos:</mat-label>
+        <input type="text" style="color: black;" matInput disabled value="{{data.reserva.nCantidad}}">
+    </mat-form-field>
+    <mat-form-field class="col-12 m-0">
+        <mat-label class="pb-2">Documento:</mat-label>
+        <input type="text" style="color: black;" matInput disabled value="{{data.reserva.cliente.tipoDocumento.sTipoDocumento + ' : ' + data.reserva.cliente.sDocumento}}">
+    </mat-form-field>    
+    <mat-form-field class="col-12 m-0">
+        <mat-label class="pb-2">Cliente:</mat-label>
+        <input type="text" style="color: black;" matInput disabled value="{{data.reserva.cliente.sApellidoP + ' ' + data.reserva.cliente.sApellidoM + ' ' + data.reserva.cliente.sNombre}}">
+    </mat-form-field>
+    <mat-form-field class="col-12 m-0">
+        <mat-label class="pb-2">Pelicula:</mat-label>
+        <input type="text" style="color: black;" matInput disabled value="{{data.reserva.salaPelicula.pelicula.sTitulo}}">
+    </mat-form-field>    
+    <mat-form-field class="col-12 m-0">
+        <mat-label class="pb-2">Fecha/Hora:</mat-label>
+        <input type="text" style="color: black;" matInput disabled value="{{data.reserva.salaPelicula.dFechaProgramada | date: 'dd/MM/yyyy hh:mm' }}">
+    </mat-form-field>    
+    <mat-form-field class="col-12 m-0">
+            <mat-label class="pb-2">Sala:</mat-label>
+            <input type="text" style="color: black;" matInput disabled value="{{data.reserva.salaPelicula.sala.sSala}}">
+    </mat-form-field>    
+    <mat-form-field class="col-12 m-0">
+        <mat-label class="pb-2">Duracion:</mat-label>
+        <input type="text" style="color: black;" matInput disabled value="{{data.reserva.salaPelicula.pelicula.tDuracion}}">
+    </mat-form-field>    
+</div>
+<div class="row p-3 m-0">
+    <button class="w-100" mat-raised-button color="warn" (click)="onClose()">CERRAR</button>
+</div>
